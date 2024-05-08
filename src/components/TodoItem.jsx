@@ -1,8 +1,21 @@
 /* eslint-disable react/prop-types */
-const TodoItem = ({ todo }) => {
+const TodoItem = ({ todo, toggleCompleted }) => {
+   const getTodoTitleStyle = () => {
+      if (todo.completed) {
+         return { textDecoration: 'line-through '}
+      } else {
+         return { textDecoration: 'none' }
+      }
+   };
+
    return (
       <div style={styles.todoItem}>
-         <p>{todo.title}</p>
+         <input 
+            type="checkbox" 
+            style={styles.checkbox}
+            onChange={() => toggleCompleted(todo.id)}
+         />
+         <p style={getTodoTitleStyle()}>{todo.title}</p>
       </div>
    )
 }
@@ -10,7 +23,15 @@ const TodoItem = ({ todo }) => {
 const styles = {
   todoItem: {
    border: '2px solid #f4f4f4',
-   fontSize: '24px'
+   fontSize: '24px',
+   display: 'flex',
+   justifyContent: 'center',
+   alignItems: 'center'
+  },
+  checkbox: {
+   width: '18px',
+   height: '18px',
+   marginRight: '10px'
   }
 }
 
