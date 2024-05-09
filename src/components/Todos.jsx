@@ -1,13 +1,14 @@
 import TodoItem from "./TodoItem";
 
 /* eslint-disable react/prop-types */
-const Todos = ({ todos, toggleCompleted }) => {
+const Todos = ({ todos, toggleCompleted, deleteTodo }) => {
   return (
     <div style={styles.container}>
       {todos.map((todo) => (
         <TodoItem 
             key={todo.id} 
             todo={todo} 
+            deleteTodo={deleteTodo}
             toggleCompleted={toggleCompleted} 
          />
       ))}
